@@ -59,21 +59,21 @@
                 </div>
             </div>
         </b-form>
-        <b-table hover striped :items="filteredList" :fields="fields">
+        <b-table  class="table-responsive" hover striped :items="filteredList" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="outline-warning" @click="loadUser(data.item)" class="mr-2">
+                <b-button variant="outline-warning" @click="loadUser(data.item)" class="mr-2 mt-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="outline-danger" @click="loadUser(data.item, 'remove')" class="mr-2">
+                <b-button variant="outline-danger" @click="loadUser(data.item, 'remove')" class="mr-2 mt-2">
                     <i class="fa fa-trash"></i>
                 </b-button>
-                <b-button v-b-modal.modalPassword variant="outline-primary" @click="loadUser(data.item)">
+                <b-button v-b-modal.modalPassword variant="outline-primary" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-key"></i>
                 </b-button>
-                <b-button  variant="outline-danger" @click="loadUser(data.item)" class="ml-2" >
+                <b-button  v-b-modal.modalBlocked  variant="outline-danger" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-unlock-alt"></i>
                 </b-button>
-                 <b-button  variant="outline-success" @click="loadUser(data.item)" class="ml-2" >
+                 <b-button v-b-modal.modalUnBlocked  variant="outline-success" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-unlock"></i>
                 </b-button>
             </template>
@@ -102,6 +102,23 @@
                 </b-col>
             </b-row>
         </b-modal>
+        <b-modal id="modalBlocked"
+            ref="modal"
+            title="Bloquear Usuário"
+            @ok="blocked"
+            >
+           <h3>Este Procedimento irá retirar o acesso do usuário. <b-badge>{{user.name}}</b-badge></h3>
+
+        </b-modal>
+        <b-modal id="modalUnBlocked"
+            ref="modal"
+            title="Desbloquear Usuário"
+            @ok="unblocked"
+            >
+           <h3>Este Procedimento irá permitir o acesso do usuário. <b-badge>{{user.name}}</b-badge></h3>
+
+        </b-modal>
+        
     </div>
 </template>
 
@@ -125,7 +142,10 @@ export default {
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'super', label: 'Supervisor', sortable: false,
                     formatter: value => value ? 'Sim' : 'Não' },    
+                { key: 'blocked', label: 'Bloqueado', sortable: false,
+                    formatter: value => value ? 'Sim' : 'Não' },    
                 { key: 'actions', label: 'Ações' }
+            
             ],
             options: [
                 { value: 1, text: 'sim' },
@@ -181,6 +201,24 @@ export default {
                 })
                 .catch(showError)
         },
+        blocked() {
+            const id = this.user.id
+            axios.put(`${baseApiUrl}/blocked/${id}`,this.user)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess()
+                    this.reset()
+                })
+                .catch(showError)
+        },
+        unblocked() {
+            const id = this.user.id
+            axios.put(`${baseApiUrl}/unblocked/${id}`, this.user)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess()
+                    this.reset()
+                })
+                .catch(showError)
+        },
         loadUser(user, mode = 'save') {
             this.mode = mode
             this.user = { ...user }
@@ -194,5 +232,15 @@ export default {
 </script>
 
 <style>
+
+    .user-admin select{
+        font-size: 0.8rem;
+    }
+    .user-admin input{
+        font-size: 0.8rem;
+    }
+        .user-admin button{
+        font-size: 0.8rem;
+    }
 
 </style>

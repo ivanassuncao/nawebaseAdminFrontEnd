@@ -5,11 +5,17 @@
         <div class="admin-pages-tabs">
             <b-card no-body >
                 <b-tabs card>
-                     <b-tab title="Usuários">
+                     <b-tab title="Usuários" active>
                         <UserAdmin />
                     </b-tab>
-                    <b-tab title="Empresa" active>
+                    <b-tab title="Empresa">
                         <CompanyAdmin />
+                    </b-tab>
+                    <b-tab title="Cargos/Funções">
+                        <OfficeAdmin />
+                    </b-tab>
+                    <b-tab title="Funcionário">
+                        <EmployeeAdmin />
                     </b-tab>
                     <!--b-tab title="Plano Conta">
                         <PlanoContaAdmin />
@@ -53,7 +59,8 @@ import VendedorAdmin from './VendedorAdmin'
 import ClienteAdmin from './ClienteAdmin'
 import ItemAdmin from './ItemAdmin'
 import PlanoContaAdmin from './PlanoContaAdmin'
-import FuncionarioAdmin from './FuncionarioAdmin'
+import EmployeeAdmin from './EmployeeAdmin'
+import OfficeAdmin from './OfficeAdmin'
 
 export default {
     name: 'AdminPages',
@@ -67,11 +74,16 @@ export default {
                 ClienteAdmin,
                 ItemAdmin,
                 PlanoContaAdmin,
-                FuncionarioAdmin
+                EmployeeAdmin,
+                OfficeAdmin
                 }
 }
 </script>
 
 <style>
+
+ .admin-pages {
+            font-size: 0.8rem;
+        }
 
 </style>

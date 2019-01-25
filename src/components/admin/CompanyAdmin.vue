@@ -7,7 +7,7 @@
                             <b-form-group label="Razão Social:" label-for="company-name_company">
                                 <b-form-input id="company-name_company" type="text" ref="searchFocus"
                                     v-model="company.name_company" required
-                                    :readonly="mode === 'remove' || mode === 'read'"
+                                    :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="Razão Social..." />
                             </b-form-group>
                         </b-col>
@@ -16,7 +16,7 @@
 
                                 <b-form-input v-mask="['##.###.###/####-##']" id="company-cnpj" type="text"
                                     v-model="company.cnpj" required
-                                    :readonly="mode === 'remove' || mode === 'read'"
+                                    :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="CNPJ..." />
                             </b-form-group>
                         </b-col>
@@ -24,7 +24,8 @@
                             <div class="form-group">
                                 <div class="form-check">
                                     <input class="form-check-input" v-model="company.blocked" true-value="1" false-value="0" type="checkbox" id="company-blocked"
-                                        :readonly="mode === 'remove' || mode === 'read'" >
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
+                                    >
                                     <label class="form-check-label" for="company-blocked">
                                         Bloqueada?
                                     </label>
@@ -42,7 +43,7 @@
                                     <b-form-group label="Inscrição Estadual:" label-for="company-insc_state">
                                         <b-form-input id="company-insc_state" type="text"
                                             v-model="company.insc_state" 
-                                            :readonly="mode === 'remove' || mode === 'read'"
+                                            :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                             placeholder="Incrição Estadual" />
                                     </b-form-group>
                                 </b-col>
@@ -50,7 +51,7 @@
                                     <b-form-group label="Inscrição Municipal:" label-for="company-insc_municipal">
                                         <b-form-input id="company-insc_municipal" type="text"
                                             v-model="company.insc_municipal" 
-                                            :readonly="mode === 'remove' || mode === 'read'"
+                                            :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                             placeholder="Incrição Municipal" />
                                     </b-form-group>
                                 </b-col>
@@ -58,7 +59,7 @@
                                     <b-form-group label="Inscrição na Junta Comercial:" label-for="company-insc_joint">
                                         <b-form-input id="company-insc_joint" type="text"
                                             v-model="company.insc_joint" 
-                                            :readonly="mode === 'remove' || mode === 'read'"
+                                            :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                             placeholder="Incrição na Junta Comercial" />
                                     </b-form-group>
                                 </b-col>
@@ -68,7 +69,7 @@
                                 <b-form-group label="Nome Fantasia:" label-for="company-fantasy_name">
                                     <b-form-input id="company-fantasy_name" type="text"
                                         v-model="company.fantasy_name" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Nome Fantasia" />
                                 </b-form-group>
                                 </b-col>
@@ -83,7 +84,7 @@
                                     <b-form-group label="Endereço:" label-for="company-adress">
                                         <b-form-input id="company-adress" type="text"
                                         v-model="company.adress" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Endereço..." />
                                     </b-form-group>
                                 </b-col>
@@ -91,7 +92,7 @@
                                     <b-form-group label="Complemento:" label-for="company-complement">
                                         <b-form-input id="company-complement" type="text"
                                         v-model="company.complement" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Complemento..." />
                                     </b-form-group>
                                 </b-col>
@@ -99,7 +100,7 @@
                                     <b-form-group label="Número:" label-for="company-number">
                                         <b-form-input id="company-number" type="text"
                                          v-model="company.number" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder=" Número..." />
                                     </b-form-group>
                                 </b-col>
@@ -110,7 +111,7 @@
                                     <b-form-group label="Bairro:" label-for="company-neighborhood">
                                         <b-form-input id="company-neighborhood" type="text"
                                         v-model="company.neighborhood" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Bairro" />
                                     </b-form-group>
                                 </b-col>
@@ -119,7 +120,7 @@
                                         label="Estado:" label-for="company-state_id">
                                         <b-form-select id="company-state_id"
                                         
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="states" v-model="company.state_id" />
                                     </b-form-group>
                                 </b-col>
@@ -127,16 +128,16 @@
                                     <b-form-group 
                                         label="Cidade:" label-for="company-city_id">
                                         <b-form-select id="company-city_id"
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="citys" v-model="company.city_id" />
                                     </b-form-group>
                                     
                                 </b-col>
                                 <b-col md="1" sm="1">
-                                    <b-button size="sm" variant="warning" @click="loadCitys" class="mr-2">
+                                    <b-button size="sm" variant="warning" @click="loadCitys" class="mr-2 mt-2">
                                         <i class="fa fa-search"></i>
                                     </b-button>
-                                    <b-button size="sm" variant="success" @click="loadCitys" class="mt-2">
+                                    <b-button size="sm" variant="success" @click="loadCitys" class="mr-2 mt-2">
                                         <i class="fa fa-plus"></i>
                                     </b-button>
                                 </b-col>
@@ -144,7 +145,7 @@
                                     <b-form-group label="CEP:" label-for="company-zip_code">
                                     <b-form-input v-mask="['#####-###']" id="company-zip_code" type="text"
                                     v-model="company.zip_code" 
-                                    :readonly="mode === 'remove' || mode === 'read'"
+                                    :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="CEP" />
                                     </b-form-group>
                                 </b-col>
@@ -158,7 +159,7 @@
                                     <b-form-group label="E-mail:" label-for="company-email">
                                         <b-form-input id="company-email" type="text"
                                         v-model="company.email" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="E-mail" />
                                     </b-form-group>
                                 </b-col>
@@ -166,7 +167,7 @@
                                     <b-form-group label="Telefone:" label-for="company-telephone">
                                         <b-form-input id="company-telephone" type="text"
                                         v-model="company.telephone" 
-                                        :readonly="mode === 'remove' || mode === 'read'"
+                                        :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Telefone" />
                                     </b-form-group>
                                 </b-col>
@@ -200,10 +201,13 @@
             <hr>
               <b-table class="table-responsive" hover striped :items="companys" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="warning" @click="loadCompany(data.item)" class="mr-2">
+                <b-button variant="outline-secondary" @click="loadCompany(data.item, 'insert')" class="mr-2 mt-2">
+                    <i class="fa fa-drivers-license-o"></i>
+                </b-button>
+                <b-button variant="outline-warning" @click="loadCompany(data.item)" class="mr-2 mt-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="danger" @click="loadCompany(data.item, 'remove')">
+                <b-button variant="outline-danger" @click="loadCompany(data.item, 'remove')" class="mr-2 mt-2">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -310,5 +314,16 @@ export default {
 </script>
 
 <style>
+
+    .company-admin select{
+        font-size: 0.8rem;
+    }
+    .company-admin input{
+        font-size: 0.8rem;
+    }
+    .company-admin button{
+        font-size: 0.8rem;
+    }
+
 
 </style>

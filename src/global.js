@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export const userKey = '__manager_user_store'
-export const empresakey = '__manager_empresa_store'
+export const companykey = '__manager_company_store'
 export const baseApiUrl = 'http://localhost:3000'
 
 export function showError(e) {
@@ -15,4 +15,4 @@ export function showError(e) {
 }
 
 
- export default {baseApiUrl, showError, userKey, empresakey} 
+ export default {baseApiUrl, showError, userKey, companykey} 

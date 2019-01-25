@@ -1,36 +1,37 @@
 <template>
     <div class="user-dropdown" >
         <div class="user-button">          
-            <span class="d-none d-sm-block" >
+            <span  class="d-none d-sm-block" >
                 <!--img v-if="emp.caminhoImagem"  :src="`img/${emp.caminhoImagem}`"  class="image"  width="70" alt="logo"/-->
                 <!--img width="70" alt="logo" class="image" src="@/assets/waforman.png">
                 <img width="70" alt="logo" class="image" src="@/assets/wastylus.png">
                 <img width="70" alt="logo" class="image" src="@/assets/wakids.png"-->
-                 {{emp.razaosocial}} / {{user.name || ''}}</span>
+                 {{compan.fantasyName || ''}} / {{ user.name || ''}}
+                 </span>
             <div class="user-dropdown-img">
-                 <Gravatar :email="user.name || ''" alt="User" />   
+                 <Gravatar :email="user.email || ''" alt="User" />   
             </div>
             <i class="fa fa-angle-down" ></i> 
         </div>
          <div class="user-dropdown-content">
-                 <b-btn v-b-modal.modalEmpresa @click.prevent=" loadEmpresas" v-b-popover.hover = "'Selecione a Loja que deseja trabalhar!'"  title = "Escolha a Loja" >Loja</b-btn>
+                 <b-btn v-b-modal.modalCompany @click.prevent=" loadCompanys" v-b-popover.hover = "'Selecione a Empresa que deseja trabalhar!'"  title = "Escolha a Empresa" >Empresa</b-btn>
                 <router-link to='/admin' v-if="user.admin" > <i class="fa fa-cogs"></i> Administração </router-link>
                 <router-link to='/supervisor' v-if="user.supervisor" > <i class="fa fa-users"></i> Supervisor </router-link>
                 <a href @click.prevent="logout" > <i class="fa fa-sign-out"></i> Sair
                 </a>
         </div>
-        <b-modal id="modalEmpresa"
+        <b-modal id="modalCompany"
             ref="modal"
-            title="Informe a Loja"
-            @ok="setEmpresa"
+            title="Informe a Empresa"
+            @ok="setCompany"
             >
-            <b-form-select id="empresa-id" :options="empresas" v-model="empresa.id" />
+            <b-form-select id="company-id" :options="companys" v-model="company.id" />
         </b-modal>
     </div>
 </template>
 
 <script>
-import {userKey, empresakey} from '@/global'
+import {userKey, companykey} from '@/global'
 import {mapState} from 'vuex'
 import Gravatar from 'vue-gravatar'
 import { baseApiUrl, showError } from '@/global'
@@ -40,35 +41,37 @@ export default {
     name: 'UserDropdown',
      data: function(){
         return {
-            empresa: {},
-            empresas: []
+            company: {},
+            companys: []
         }
     },
     components: {Gravatar},
-    computed: mapState(['user','emp']),
+    computed: mapState(['user','compan']),
     methods:{
         logout(){
             localStorage.removeItem(userKey)
+            localStorage.removeItem(companykey)
             this.$store.commit('setUser',null)
+            this.$store.commit('setCompan',null)
             this.$router.push({name: 'auth'})
         },
-        setEmpresa() {
-            axios.post(`${baseApiUrl}/setEmp`, this.empresa)
+        setCompany() {
+            axios.post(`${baseApiUrl}/setCompany`, this.company)
                 .then(res => {
-                    localStorage.removeItem(empresakey)
-                    this.$store.commit('setEmp', res.data)
-                    localStorage.setItem(empresakey, JSON.stringify(res.data))
+                    localStorage.removeItem(companykey)
+                    this.$store.commit('setCompan', res.data)
+                    localStorage.setItem(companykey, JSON.stringify(res.data))
                     this.$router.push({ path: '/' })
                     //this.logoEmp = require(`~/assets/img/${this.empresa.caminhoImagem}`)  
                    
                 })
                 .catch(showError)
         },
-         loadEmpresas() {
-            const url = `${baseApiUrl}/empresas`
+         loadCompanys() {
+            const url = `${baseApiUrl}/companys`
             axios.get(url).then(res => {
-                this.empresas = res.data.map(empresa => {
-                    return { ...empresa, value: empresa.id, text: empresa.razaosocial }})
+                this.companys = res.data.map(company => {
+                    return { ...company, value: company.id, text: company.name_company }})
             })
         }
     }

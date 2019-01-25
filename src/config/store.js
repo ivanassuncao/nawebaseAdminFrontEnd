@@ -8,7 +8,7 @@ export default new Vuex.Store({
     state:{
         isMenuVisible: false,
         user: null,
-        emp: ''
+        compan: ''
     },
     mutations:{
         toggleMenu(state,isVisible){
@@ -32,8 +32,8 @@ export default new Vuex.Store({
                state.isMenuVisible = false
             }
         },
-        setEmp(state,empresa){
-            state.emp = empresa
+        setCompan(state,company){
+            state.compan = company
         }
     }
 })

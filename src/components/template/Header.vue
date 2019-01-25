@@ -52,9 +52,10 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 0.8rem;
     }
     .title{
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #fff;
         font-weight: 80;
         flex-grow: 1;
