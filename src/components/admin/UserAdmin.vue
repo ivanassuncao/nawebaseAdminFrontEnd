@@ -3,50 +3,58 @@
         <b-form>
             <input id="user-id" type="hidden" v-model="user.id" />
             <b-row>
-                <b-col md="6" sm="12">
+                <b-col md="5" sm="12">
                     <b-form-group label="Nome:" label-for="user-name">
                         <b-form-input id="user-name" type="text" ref="searchFocus"
                             v-model="user.name" required
+                            size="sm"
                             :readonly="mode === 'remove' || mode === 'read'"
                             placeholder="Nome do Usuário..." />
                     </b-form-group>
                 </b-col>
-                <b-col md="6" sm="12">
+                <b-col md="5" sm="12">
                     <b-form-group label="E-mail:" label-for="user-email">
                         <b-form-input id="user-email" type="text"
                             v-model="user.email" required
+                            size="sm"
                             :readonly="mode === 'remove' || mode === 'read'"
                             placeholder="E-mail do Usuário..." />
                     </b-form-group>
                 </b-col>
                 
             </b-row>
-              <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" v-model="user.admin" true-value="1" false-value="0" type="checkbox" id="user-admin"
+            <b-row>
+                 <b-col md="3" sm="12">
+                    <div class="form-group">
+                        <div class="form-check">
+                        <input class="form-check-input" v-model="user.admin" true-value="1" false-value="0" type="checkbox" id="user-admin"
                         :readonly="mode === 'remove' || mode === 'read'" >
-                    <label class="form-check-label" for="user-admin">
+                        <label class="form-check-label" for="user-admin">
                         Administrador?
-                    </label>
-                </div>
-            </div>
-             <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" v-model="user.super" true-value="1" false-value="0" type="checkbox" id="user-super"
-                    :readonly="mode === 'remove' || mode === 'read'">
-                    <label class="form-check-label" for="user-super">
-                        Supervisor?
-                    </label>
-                </div>
-            </div>
+                        </label>
+                        </div>
+                    </div>
+                 </b-col>
+                   <b-col md="3" sm="12">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" v-model="user.super" true-value="1" false-value="0" type="checkbox" id="user-super"
+                            :readonly="mode === 'remove' || mode === 'read'">
+                            <label class="form-check-label" for="user-super">
+                            Supervisor?
+                            </label>
+                            </div>
+                        </div>
+                   </b-col>
+            </b-row>
             <b-row>
                 <b-col xs="12">
                       <hr v-if="mode === 'remove' || mode === 'save' " >
-                    <b-button btn-sm variant="outline-primary" v-if="mode === 'save'"
+                    <b-button size="sm" btn-sm variant="outline-primary" v-if="mode === 'save'"
                         @click="save">Salvar</b-button>
-                    <b-button btn-sm variant="outline-danger" v-if="mode === 'remove'"
+                    <b-button size="sm" btn-sm variant="outline-danger" v-if="mode === 'remove'"
                         @click="remove">Excluir</b-button>
-                    <b-button btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
+                    <b-button size="sm" btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
                     @click="reset">Cancelar</b-button>
                   
                 </b-col>
@@ -55,25 +63,25 @@
              <div class="col-sm-4">
                 <div class="form-group">
                     <label class="control-label"> <i class="fa fa-search"></i>  Pesquisar os Usuários</label>
-                    <input type="text" icon="search" v-model="search" placeholder="Informe o nome do Usuário" class="form-control">
+                    <input size="sm" type="text" icon="search" v-model="search" placeholder="Informe o nome do Usuário" class="form-control">
                 </div>
             </div>
         </b-form>
         <b-table  class="table-responsive" hover striped :items="filteredList" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="outline-warning" @click="loadUser(data.item)" class="mr-2 mt-2">
+                <b-button size="sm" variant="outline-warning" @click="loadUser(data.item)" class="mr-2 mt-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="outline-danger" @click="loadUser(data.item, 'remove')" class="mr-2 mt-2">
+                <b-button size="sm" variant="outline-danger" @click="loadUser(data.item, 'remove')" class="mr-2 mt-2">
                     <i class="fa fa-trash"></i>
                 </b-button>
-                <b-button v-b-modal.modalPassword variant="outline-primary" @click="loadUser(data.item)" class="mr-2 mt-2" >
+                <b-button size="sm" v-b-modal.modalPassword variant="outline-primary" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-key"></i>
                 </b-button>
-                <b-button  v-b-modal.modalBlocked  variant="outline-danger" @click="loadUser(data.item)" class="mr-2 mt-2" >
+                <b-button size="sm"  v-b-modal.modalBlocked  variant="outline-danger" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-unlock-alt"></i>
                 </b-button>
-                 <b-button v-b-modal.modalUnBlocked  variant="outline-success" @click="loadUser(data.item)" class="mr-2 mt-2" >
+                 <b-button  size="sm" v-b-modal.modalUnBlocked  variant="outline-success" @click="loadUser(data.item)" class="mr-2 mt-2" >
                     <i class="fa fa-unlock"></i>
                 </b-button>
             </template>
@@ -82,12 +90,17 @@
           <b-modal id="modalPassword"
             ref="modal"
             title="Alterar Senha"
+            :header-bg-variant="headerBgVariant"
+            :header-text-variant="headerTextVariant"
+            :body-bg-variant="bodyBgVariant"
+            :body-text-variant="bodyTextVariant"
             @ok="passwordChange"
             >
              <b-row v-show="mode === 'save'">
                 <b-col md="6" sm="12">
                     <b-form-group label="Senha:" label-for="user-password">
                         <b-form-input id="user-password" type="password"
+                            size="sm"
                             v-model="user.password"
                             placeholder="Senha do Usuário..." />
                     </b-form-group>
@@ -96,6 +109,7 @@
                     <b-form-group label="Confirmação de Senha:" 
                         label-for="user-confirm-password">
                         <b-form-input id="user-confirm-password" type="password"
+                            size="sm"
                             v-model="user.confirmPassword" 
                             placeholder="Confirme a Senha..." />
                     </b-form-group>
@@ -105,17 +119,25 @@
         <b-modal id="modalBlocked"
             ref="modal"
             title="Bloquear Usuário"
+            :header-bg-variant="headerBgVariant"
+            :header-text-variant="headerTextVariant"
+            :body-bg-variant="bodyBgVariant"
+            :body-text-variant="bodyTextVariant"
             @ok="blocked"
             >
-           <h3>Este Procedimento irá retirar o acesso do usuário. <b-badge>{{user.name}}</b-badge></h3>
+           <p class="my-4">Este Procedimento irá retirar o acesso do usuário. <b-badge>{{user.name}}</b-badge></p>
 
         </b-modal>
         <b-modal id="modalUnBlocked"
             ref="modal"
             title="Desbloquear Usuário"
+            :header-bg-variant="headerBgVariant"
+            :header-text-variant="headerTextVariant"
+            :body-bg-variant="bodyBgVariant"
+            :body-text-variant="bodyTextVariant"
             @ok="unblocked"
             >
-           <h3>Este Procedimento irá permitir o acesso do usuário. <b-badge>{{user.name}}</b-badge></h3>
+           <p class="my-4" >Este Procedimento irá permitir o acesso do usuário. <b-badge>{{user.name}}</b-badge></p>
 
         </b-modal>
         
@@ -134,6 +156,12 @@ export default {
             search: '',
             user: {},
             users: [],
+            headerBgVariant: 'primary',
+            headerTextVariant: 'light',
+            bodyBgVariant: 'light',
+            bodyTextVariant: 'dark',
+            footerBgVariant: 'warning',
+            footerTextVariant: 'dark',
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
@@ -239,7 +267,7 @@ export default {
     .user-admin input{
         font-size: 0.8rem;
     }
-        .user-admin button{
+    .user-admin button{
         font-size: 0.8rem;
     }
 

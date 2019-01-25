@@ -34,5 +34,13 @@ export default {
 .menu a{
   display: block;
   text-decoration: none;
+  color: #fff;
 }
+.menu i {
+  color: #fff;
+}
+.menu-area{
+   background: linear-gradient(to right, #1e469a, #158aaa);
+}
+
 </style>

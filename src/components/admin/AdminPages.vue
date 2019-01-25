@@ -17,6 +17,9 @@
                     <b-tab title="Funcionário">
                         <EmployeeAdmin />
                     </b-tab>
+                    <b-tab title="Grupo de Itens">
+                        <GroupItemAdmin />
+                    </b-tab>
                     <!--b-tab title="Plano Conta">
                         <PlanoContaAdmin />
                     </b-tab>
@@ -53,7 +56,7 @@ import PageTitle from '../template/PageTitle'
 import ArticleAdmin from './ArticleAdmin'
 import CategoryAdmin from './CategoryAdmin'
 import UserAdmin from './UserAdmin'
-import GrupoItemAdmin from './GrupoItemAdmin'
+import GroupItemAdmin from './GroupItemAdmin'
 import CompanyAdmin from './CompanyAdmin'
 import VendedorAdmin from './VendedorAdmin'
 import ClienteAdmin from './ClienteAdmin'
@@ -68,7 +71,7 @@ export default {
                 ArticleAdmin,
                 CategoryAdmin,
                 UserAdmin,
-                GrupoItemAdmin,
+                GroupItemAdmin,
                 CompanyAdmin,
                 VendedorAdmin,
                 ClienteAdmin,

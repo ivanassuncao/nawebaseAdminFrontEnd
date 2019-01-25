@@ -7,7 +7,7 @@ import AdminPages from '@/components/admin/AdminPages'
 import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
-import EmpresaModal from '@/components/util/EmpresaModal'
+import ItemSearch from '@/components/item/ItemSearch'
 
 import {userKey} from '@/global'
 
@@ -32,9 +32,9 @@ const routes = [
     meta: { requiresAdmin: true}
 },
 {
-    name: 'empresaModal',
-    path: '/emp',
-    component: EmpresaModal
+    name: 'itemSearch',
+    path: '/groupitems/:id/items',
+    component: ItemSearch
 },
 {
     name: 'auth',

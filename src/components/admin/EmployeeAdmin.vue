@@ -7,6 +7,7 @@
                             <b-form-group label="Nome:" label-for="employee-name">
                                 <b-form-input id="employee-name" type="text" ref="searchFocus"
                                     v-model="employee.name" required
+                                    size="sm"
                                     :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="Nome..." />
                             </b-form-group>
@@ -16,6 +17,7 @@
 
                                 <b-form-input v-mask="['###.###.###-##']" id="employee-cnpj" type="text"
                                     v-model="employee.cpf" required
+                                    size="sm"
                                     :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="CPF..." />
                             </b-form-group>
@@ -35,7 +37,7 @@
                     </b-row>
                     
                 <b-card no-body>
-                    <b-tabs pills card vertical>
+                    <b-tabs pills card vertical small>
                         <b-tab title="Registro" active>
                         <b-form>
                              <b-row>
@@ -43,6 +45,7 @@
                                     <b-form-group label="CTPS:" label-for="employee-ctps">
                                         <b-form-input id="employee-ctps" type="text"
                                             v-model="employee.ctps" 
+                                            size="sm"
                                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                             placeholder="CTPS" />
                                     </b-form-group>
@@ -51,6 +54,7 @@
                                     <b-form-group label="Data da CTPS:" label-for="employee-ctps_date">
                                     <b-form-input id="employee-ctps_date" type="date"
                                         v-model="employee.ctps_date" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     />
                                     
@@ -60,6 +64,7 @@
                                     <b-form-group label="RG:" label-for="employee-rg">
                                         <b-form-input id="employee-rg" type="text"
                                             v-model="employee.rg" 
+                                            size="sm"
                                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                             placeholder="RG" />
                                     </b-form-group>
@@ -68,6 +73,7 @@
                                     <b-form-group label="Data do RG:" label-for="employee-rg_date">
                                     <b-form-input id="employee-rg_date" type="date"
                                         v-model="employee.rg_date" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     />
                                     </b-form-group>
@@ -78,6 +84,7 @@
                                         <b-form-group label="Matrícula:" label-for="employee-registration">
                                             <b-form-input id="employee-registration" type="text"
                                                 v-model="employee.registration" 
+                                                size="sm"
                                                 :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                                 placeholder="Matrícula" />
                                         </b-form-group>
@@ -86,6 +93,7 @@
                                         <b-form-group label="Data de Admissão:" label-for="employee-admission_date">
                                         <b-form-input id="employee-admission_date" type="date"
                                             v-model="employee.admission_date" 
+                                            size="sm"
                                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         />
                                         </b-form-group>
@@ -94,6 +102,7 @@
                                         <b-form-group label="Data de Demissão:" label-for="employee-date_of_resignation">
                                         <b-form-input id="employee-date_of_resignation" type="date"
                                             v-model="employee.date_of_resignation" 
+                                            size="sm"
                                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         />
                                         </b-form-group>
@@ -104,7 +113,7 @@
                                     <b-form-group 
                                         label="Cargo/Função:" label-for="employee-office_id">
                                         <b-form-select id="employee-office_id"
-                                        
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="offices" v-model="employee.office_id" />
                                     </b-form-group>
@@ -113,7 +122,7 @@
                                     <b-form-group 
                                         label="Empresa:" label-for="employee-company_id">
                                         <b-form-select id="employee-company_id"
-                                        
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="companys" v-model="employee.company_id" />
                                     </b-form-group>
@@ -122,7 +131,7 @@
                                     <b-form-group 
                                         label="Usuário:" label-for="employee-user_id">
                                         <b-form-select id="employee-user_id"
-                                        
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="users" v-model="employee.user_id" />
                                     </b-form-group>
@@ -138,6 +147,7 @@
                                     <b-form-group label="Endereço:" label-for="employee-adress">
                                         <b-form-input id="employee-adress" type="text"
                                         v-model="employee.adress" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Endereço..." />
                                     </b-form-group>
@@ -146,6 +156,7 @@
                                     <b-form-group label="Complemento:" label-for="employee-complement">
                                         <b-form-input id="employee-complement" type="text"
                                         v-model="employee.complement" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Complemento..." />
                                     </b-form-group>
@@ -154,6 +165,7 @@
                                     <b-form-group label="Número:" label-for="employee-number">
                                         <b-form-input id="employee-number" type="text"
                                          v-model="employee.number" 
+                                         size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder=" Número..." />
                                     </b-form-group>
@@ -165,6 +177,7 @@
                                     <b-form-group label="Bairro:" label-for="employee-neighborhood">
                                         <b-form-input id="employee-neighborhood" type="text"
                                         v-model="employee.neighborhood" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Bairro" />
                                     </b-form-group>
@@ -173,7 +186,7 @@
                                     <b-form-group 
                                         label="Estado:" label-for="employee-state_id">
                                         <b-form-select id="employee-state_id"
-                                        
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="states" v-model="employee.state_id" />
                                     </b-form-group>
@@ -182,6 +195,7 @@
                                     <b-form-group 
                                         label="Cidade:" label-for="employee-city_id">
                                         <b-form-select id="employee-city_id"
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         :options="citys" v-model="employee.city_id" />
                                     </b-form-group>
@@ -199,6 +213,7 @@
                                     <b-form-group label="CEP:" label-for="employee-zip_code">
                                     <b-form-input v-mask="['#####-###']" id="employee-zip_code" type="text"
                                     v-model="employee.zip_code" 
+                                    size="sm"
                                     :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                     placeholder="CEP" />
                                     </b-form-group>
@@ -213,6 +228,7 @@
                                     <b-form-group label="E-mail:" label-for="employee-email">
                                         <b-form-input id="employee-email" type="text"
                                         v-model="employee.email" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="E-mail" />
                                     </b-form-group>
@@ -221,6 +237,7 @@
                                     <b-form-group label="Telefone:" label-for="employee-telephone">
                                         <b-form-input id="employee-telephone" type="text"
                                         v-model="employee.telephone" 
+                                        size="sm"
                                         :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         placeholder="Telefone" />
                                     </b-form-group>
@@ -229,6 +246,7 @@
                                         <b-form-group label="Data de Nascimento:" label-for="employee-birth_date">
                                         <b-form-input id="employee-birth_date" type="date"
                                             v-model="employee.birth_date" 
+                                            size="sm"
                                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                                         />
                                         </b-form-group>
@@ -237,7 +255,7 @@
                             <b-row>
                                 <b-col md="6" sm="12">
                                     <b-form-group label="Imagem do Funcionário:" label-for="employee-photo">
-                                        <b-form-file v-model="employee.photo" id="employee-photo" class="mt-3" accept=".jpg, .png, .gif" ></b-form-file>
+                                        <b-form-file size="sm" v-model="employee.photo" id="employee-photo" class="mt-3" accept=".jpg, .png, .gif" ></b-form-file>
                                     </b-form-group>
                                 </b-col> 
                             </b-row>     
@@ -248,27 +266,35 @@
                 <hr>
                 <b-row>                   
                 <b-col xs="12">
-                    <b-button variant="outline-success" class="mr-2" v-show="mode === 'insert'"
+                    <b-button size="sm" variant="outline-success" class="mr-2" v-show="mode === 'insert'"
                         @click="alterModo">Adicionar</b-button>
-                    <b-button variant="outline-primary" v-if="mode === 'save'"
+                    <b-button size="sm" variant="outline-primary" v-if="mode === 'save'"
                         @click="save">Salvar</b-button>
-                    <b-button variant="outline-danger" v-if="mode === 'remove'"
+                    <b-button size="sm" variant="outline-danger" v-if="mode === 'remove'"
                         @click="remove">Excluir</b-button>
-                    <b-button btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
+                    <b-button size="sm" btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
                     @click="reset">Cancelar</b-button>
                 </b-col>
             </b-row>
             </b-form>
             <hr>
-              <b-table class="table-responsive" hover striped :items="employees" :fields="fields">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label"> <i class="fa fa-search"></i>  Pesquisar os Funcionários</label>
+                        <input size="sm" type="text" icon="search" v-model="search" placeholder="Informe o nome do Funcionário" 
+                        class="form-control">
+                    </div>
+                </div>
+            <hr>
+              <b-table class="table-responsive" hover striped :items="filteredList" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="outline-secondary" @click="loadEmployee(data.item, 'insert')" class="mr-2 mt-2">
+                <b-button size="sm" variant="outline-secondary" @click="loadEmployee(data.item, 'insert')" class="mr-2 mt-2">
                     <i class="fa fa-drivers-license-o"></i>
                 </b-button>
-                <b-button variant="outline-warning" @click="loadEmployee(data.item, 'save')" class="mr-2 mt-2">
+                <b-button size="sm" variant="outline-warning" @click="loadEmployee(data.item, 'save')" class="mr-2 mt-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="outline-danger" @click="loadEmployee(data.item, 'remove')" class="mr-2 mt-2">
+                <b-button size="sm" variant="outline-danger" @click="loadEmployee(data.item, 'remove')" class="mr-2 mt-2">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -294,6 +320,7 @@ export default {
                     offices:[],
                     companys:[],
                     users:[],
+                    search: '',
                     fields: [
                         { key: 'id', label: 'Código', sortable: true },
                         { key: 'name', label: 'Nome', sortable: true },
@@ -304,6 +331,13 @@ export default {
                         formatter: value => value ? 'Sim' : 'Não' },
                         { key: 'actions', label: 'Ações' }
                     ]
+                }
+            },
+            computed: {
+                filteredList() {
+                    return this.employees.filter(employee => {
+                    return employee.name.toLowerCase().includes(this.search.toLowerCase())
+                    })
                 }
             },
             methods: {
@@ -362,12 +396,13 @@ export default {
                   
                 },
                 reset() {
-                        this.employee = {}
-                          this.mode = 'insert'
+                        //this.employee = {}
+                        this.mode = 'insert'
                         this.loadEmployees()
                 },
                 alterModo() {
                         this.mode = 'save'
+                        this.employee = {}
                         this.$refs.searchFocus.focus();
                 },
                 remove() {

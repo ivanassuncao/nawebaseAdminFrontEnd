@@ -7,6 +7,7 @@
                     <b-form-group label="Nome:" label-for="office-name">
                         <b-form-input id="office-name" type="text" ref="searchFocus"
                             v-model="office.name" required
+                            size="sm"
                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                             placeholder="Nome do Cargo/Função..." />
                     </b-form-group>
@@ -14,6 +15,7 @@
                         <b-form-textarea id="office-acessoMenu"
                             :rows="3"
                             :max-rows="6"
+                            size="sm"
                             v-model="office.description"
                             :readonly="mode === 'remove' || mode === 'read' || mode === 'insert'"
                             placeholder="" />
@@ -21,20 +23,22 @@
                 </b-col>
 
              </b-row>
-              <b-row>
+                <hr>
+              <b-row >
+  
                 <b-col xs="12">
-                    <b-button variant="outline-success" class="mr-2" v-show="mode === 'insert'"
+                    <b-button  size="sm" variant="outline-success" class="mr-2" v-show="mode === 'insert'"
                         @click="alterModo">Adicionar</b-button>
-                    <b-button variant="outline-primary" v-if="mode === 'save'"
+                    <b-button  size="sm" variant="outline-primary" v-if="mode === 'save'"
                         @click="save">Salvar</b-button>
-                    <b-button variant="danger" v-if="mode === 'remove'"
+                    <b-button  size="sm" variant="danger" v-if="mode === 'remove'"
                         @click="remove">Excluir</b-button>
-                    <b-button btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
+                    <b-button  size="sm" btn-sm variant="outline-secondary" class="ml-2"  v-if="mode === 'remove' || mode === 'save' "
                     @click="reset">Cancelar</b-button>
                 </b-col>
             </b-row>
          </b-form>
-              <hr>
+              <hr> 
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label"> <i class="fa fa-search"></i>  Pesquisar os Cargos/Funções</label>
@@ -44,10 +48,10 @@
             <hr>
          <b-table class="table-responsive" hover striped :items="filteredList" :fields="fields">
                <template slot="actions" slot-scope="data">
-                    <b-button variant="outline-warning" @click="loadOffice(data.item)" class="mr-2 mt-2">
+                    <b-button  size="sm" variant="outline-warning" @click="loadOffice(data.item)" class="mr-2 mt-2">
                         <i class="fa fa-pencil"></i>
                     </b-button>
-                     <b-button variant="outline-danger" @click="loadOffice(data.item, 'remove')" class="mr-2 mt-2">
+                     <b-button  size="sm" variant="outline-danger" @click="loadOffice(data.item, 'remove')" class="mr-2 mt-2">
                         <i class="fa fa-trash"></i>
                     </b-button>
                 </template>   
@@ -91,11 +95,11 @@ export default {
         },
         reset() {
             this.mode = 'insert'
-            this.office = {}
             this.loadOffices()
         },
         alterModo() {
                     this.mode = 'save'
+                    this.office = {}
                     this.$refs.searchFocus.focus();
             },
         save() {
@@ -130,5 +134,16 @@ export default {
 </script>
 
 <style>
+
+
+    .office-admin select{
+        font-size: 0.8rem;
+    }
+    .office-admin input{
+        font-size: 0.8rem;
+    }
+    .office-admin button{
+        font-size: 0.8rem;
+    }
 
 </style>

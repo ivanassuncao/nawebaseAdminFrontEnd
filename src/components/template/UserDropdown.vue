@@ -14,7 +14,7 @@
             <i class="fa fa-angle-down" ></i> 
         </div>
          <div class="user-dropdown-content">
-                 <b-btn v-b-modal.modalCompany @click.prevent=" loadCompanys" v-b-popover.hover = "'Selecione a Empresa que deseja trabalhar!'"  title = "Escolha a Empresa" >Empresa</b-btn>
+                 <b-btn size="sm" v-b-modal.modalCompany @click.prevent=" loadCompanys" v-b-popover.hover = "'Selecione a Empresa que deseja trabalhar!'"  title = "Escolha a Empresa" >Empresa</b-btn>
                 <router-link to='/admin' v-if="user.admin" > <i class="fa fa-cogs"></i> Administração </router-link>
                 <router-link to='/supervisor' v-if="user.supervisor" > <i class="fa fa-users"></i> Supervisor </router-link>
                 <a href @click.prevent="logout" > <i class="fa fa-sign-out"></i> Sair
@@ -23,6 +23,10 @@
         <b-modal id="modalCompany"
             ref="modal"
             title="Informe a Empresa"
+            :header-bg-variant="headerBgVariant"
+            :header-text-variant="headerTextVariant"
+            :body-bg-variant="bodyBgVariant"
+            :body-text-variant="bodyTextVariant"
             @ok="setCompany"
             >
             <b-form-select id="company-id" :options="companys" v-model="company.id" />
@@ -42,7 +46,13 @@ export default {
      data: function(){
         return {
             company: {},
-            companys: []
+            companys: [],
+            headerBgVariant: 'primary',
+            headerTextVariant: 'light',
+            bodyBgVariant: 'light',
+            bodyTextVariant: 'dark',
+            footerBgVariant: 'warning',
+            footerTextVariant: 'dark'
         }
     },
     components: {Gravatar},
@@ -82,7 +92,16 @@ export default {
     .user-dropdown {
         position: relative;
         height: 100%;
+        font-size: 0.8rem;
     }
+
+  .user-dropdown button {
+        font-size: 0.8rem;
+    }
+
+    .user-dropdown select {
+        font-size: 0.8rem;
+    }  
 
     .user-button {
         display: flex;
@@ -91,6 +110,7 @@ export default {
         font-weight: 100;
         height: 100%;
         padding: 0px 20px;
+        font-size: 0.8rem;
     }
 
     .user-dropdown:hover {

@@ -61,6 +61,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 0.8rem;
     }
     .auth-modal{
         background-color: #fff;
